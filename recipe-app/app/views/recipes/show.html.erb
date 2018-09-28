@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<h1>Recipe Show</h1>
+<h3> Recipe Name: <%=@r.name%> </h3>
+<h3> Author: <a href='/users/<%=@r.user.id%>'><%=@r.user.name%> </a></h3>
+<h3> Ingredients: </h3>
+<%@r.ingredients.each do |i|%>
+<h3><a href='/ingredients/<%=i.id%>'><%=i.name%></a></h3>
+<%end%>
+<%= form_tag recipe_path(@r.id), method: "delete" do %>
+<%= submit_tag "Delete #{@r.name}" %>
+<%end%>
